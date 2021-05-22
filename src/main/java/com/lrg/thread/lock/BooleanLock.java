@@ -69,9 +69,15 @@ public class BooleanLock implements Lock {
         }
     }
 
-    public void tryLock() throws InterruptedException {
+    public boolean tryLock() {
         synchronized (this) {
-
+            Thread currentThread = Thread.currentThread();
+            if (!locked) {
+                this.currentThread = currentThread;
+                locked = true;
+                return true;
+            }
+            return false;
         }
     }
 

@@ -9,5 +9,5 @@ public interface Lock {
 
     void lock(int milliseconds) throws InterruptedException, TimeoutException;
 
-    void tryLock() throws InterruptedException;
+    boolean tryLock();
 }
