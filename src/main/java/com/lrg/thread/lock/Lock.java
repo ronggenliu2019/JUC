@@ -1,10 +1,13 @@
 package com.lrg.thread.lock;
 
+import java.util.concurrent.TimeoutException;
+
 public interface Lock {
-    public void lock() throws InterruptedException;
+    void lock() throws InterruptedException;
 
-    public void unlock() throws InterruptedException;
+    void unlock() throws InterruptedException;
 
-//    public void lock(int millseconds) throws InterruptedException;
-    public void tryLock() throws InterruptedException;
+    void lock(int milliseconds) throws InterruptedException, TimeoutException;
+
+    void tryLock() throws InterruptedException;
 }
