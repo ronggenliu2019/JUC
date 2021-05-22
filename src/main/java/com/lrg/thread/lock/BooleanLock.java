@@ -43,7 +43,7 @@ public class BooleanLock implements Lock {
     @Override
     public void lock(int milliseconds) throws InterruptedException, TimeoutException {
         synchronized (this) {
-            // 这里的synchronized同步模块，只是等待Processor的monitor lock，而且这个切换是几毫秒级别的，很短。
+            // synchronized同步模块，虽然是串行化的，需要等待Processor的monitor lock，这个切换是几毫秒级别的，很短。
             // 所以可以忽略拿到monitor lock之前的时间。
             System.out.println(Thread.currentThread().getName() + " got monitor lock...");
             if (milliseconds <= 0) {
